@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Mother's Day | For Maa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .antigravity { animation: float 6s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        .text-glow { text-shadow: 0 0 10px #ff007a, 0 0 20px #ff007a; }
+        .cursive-text { font-family: 'Playfair Display', serif; }
+        
+        .cinematic-frame { position: relative; overflow: hidden; border-top: 2px solid #111; border-bottom: 2px solid #111; }
+        .cinematic-frame::before, .cinematic-frame::after { content: ''; position: absolute; left: 0; right: 0; height: 10%; background: #000; z-index: 5; pointer-events: none; }
+        .cinematic-frame::before { top: 0; }
+        .cinematic-frame::after { bottom: 0; }
+        .film-still { aspect-ratio: 16/9; object-fit: cover; width: 100%; filter: contrast(1.1) brightness(0.9); }
+
+        /* Polaroid specific styles */
+        .polaroid-card { background: white; padding: 10px 10px 40px 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border-radius: 4px; }
+    </style>
+</head>
+<body class="selection:bg-pink-500 selection:text-white">
+
+    <!-- Hidden Audio Player -->
+    <audio id="bg-music" loop>
+        <source src="PASTE_YOUR_EMOTIONAL_SONG_LINK_HERE.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Hero Section -->
+    <section class="h-[100dvh] flex flex-col items-center justify-center relative overflow-hidden px-4 md:px-6">
+        <div class="absolute inset-0 opacity-40">
+            <img src="PASTE_HERO_IMAGE_LINK_HERE" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000" alt="Hero Background">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]"></div>
+        </div>
+        
+        <div class="z-10 text-center animate__animated animate__fadeInUp w-full max-w-4xl">
+            <h1 class="text-5xl md:text-8xl font-black italic text-glow mb-4 tracking-tighter">M A A .</h1>
+            <p class="text-lg md:text-2xl text-cyan-400 font-mono tracking-widest uppercase">My Safest Place</p>
+            
+            <div class="mt-8 md:mt-12 w-full md:max-w-2xl glass p-6 md:p-8 rounded-2xl mx-auto border-t-4 border-pink-500 shadow-2xl">
+                <p class="text-lg md:text-2xl italic leading-relaxed cursive-text">
+                    "Labon pe uske kabhi baddua nahi hoti..."<br>
+                    <span class="text-pink-400 block mt-2 text-base md:text-xl">"Bas ek maa hai jo mujhse khafa nahi hoti."</span>
+                    <span class="block mt-4 text-sm font-sans text-zinc-400 not-italic">— Munawwar Rana</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The "Best Mom" Interactive Feature -->
+    <section class="py-16 px-4 md:px-6 max-w-4xl mx-auto text-center">
+        <div class="flex flex-col items-center justify-center">
+            <button onclick="revealBestMom()" id="triggerBtn" class="glass px-8 md:px-12 py-4 md:py-5 rounded-full text-lg md:text-xl font-mono text-cyan-400 hover:text-white border border-cyan-500 hover:bg-cyan-600 transition-all duration-500 shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.8)] focus:outline-none focus:ring-2 focus:ring-cyan-300">
+                Click to ask the universe a question... ✨
+            </button>
+            
+            <div id="bestMomReveal" class="hidden mt-10 w-full glass p-8 md:p-12 rounded-3xl border-2 border-pink-500 shadow-[0_0_40px_rgba(236,72,153,0.4)] animate__animated animate__zoomIn">
+                <h2 class="text-3xl md:text-5xl font-black text-glow italic mb-4">Who is the greatest blessing of my life?</h2>
+                <h2 class="text-4xl md:text-6xl font-black text-white mt-4">YOU ARE. ❤️</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cinematic Video Trigger Section -->
+    <section class="py-8 px-4 text-center z-20 relative">
+        <button onclick="openVideo()" class="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-pink-600 font-mono rounded-full hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-600 shadow-[0_0_30px_rgba(236,72,153,0.6)] hover:scale-105">
+            <svg class="w-6 h-6 mr-2 animate-pulse" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+            Play Our Story
+        </button>
+    </section>
+
+    <!-- The Proud "Foundation" Section -->
+    <section class="py-16 px-4 md:px-6 max-w-4xl mx-auto">
+        <div class="glass p-8 md:p-14 rounded-3xl border-l-4 border-pink-500 border-r-4 border-cyan-500 shadow-2xl relative overflow-hidden text-center">
+            <div class="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-cyan-500/10 pointer-events-none"></div>
+            
+            <h2 class="cursive-text text-3xl md:text-5xl text-white mb-6 text-glow">The Foundation of My Dreams</h2>
+            
+            <p class="text-lg md:text-xl text-zinc-300 leading-relaxed font-serif max-w-2xl mx-auto">
+         
+                               Maa, Happy Mother's Day.
+
+I know today is supposed to be all about you, and it is, but I can't stand here and talk about my life without talking about both you and Papa together. You both are the only reason I am who I am today.
+
+Maa, you are my safest place. You are the quiet, unconditional warmth behind absolutely everything I do. And Papa, you are the backbone. The way you both have silently supported me, giving me the freedom to dream and the safety net I needed when things got tough I don't say it enough, but I notice every single sacrifice.
+
+               <br><br>
+                Sometimes I get so caught up in my own world pushing through my BBA courses, trying to grow the business, or staying up late trying to get the perfect edit for a video. It might look like I'm just chasing my own goals, but the truth is, the drive behind all of that hustle comes entirely from you two. I want to build a future that repays even a fraction of what you've given me. Literally everything I do, I do it for you. Any success I achieve is yours first.
+
+There is a beautiful Shayari that perfectly describes how I feel about you both:
+<br><br>
+"Gher lene ko mujhe jab bhi balayen aayin,
+Dhal bankar samne maa baap ki duayen aayin.
+(Whenever troubles came to surround me, the prayers of my parents came forward as a shield.)"
+<br><br>
+There isn't enough code in the world, or a camera lens wide enough, to capture exactly how much I love you both. Thank you for being the greatest blessing of my life.
+<br><br>
+Love always,
+Qusai 
+
+            </p>
+        </div>
+    </section>
+
+    <!-- NEW: The Photobooth Section -->
+    <section class="py-16 px-4 md:px-6 max-w-4xl mx-auto text-center border-t border-zinc-800">
+        <h2 class="cursive-text text-3xl md:text-4xl text-cyan-400 mb-4">Maa & Me Photobooth 📸</h2>
+        <p class="text-zinc-400 font-mono text-sm mb-8">Let's capture a memory right now.</p>
+
+        <div class="flex flex-col items-center justify-center space-y-6">
+            <!-- Camera Viewfinder -->
+            <div id="cameraWrapper" class="hidden relative w-full max-w-md aspect-square bg-black rounded-xl overflow-hidden border-4 border-zinc-700 shadow-[0_0_30px_rgba(6,182,212,0.3)]">
+                <video id="cameraFeed" autoplay playsinline class="w-full h-full object-cover transform scale-x-[-1]"></video>
+                <div id="countdownOverlay" class="absolute inset-0 flex items-center justify-center text-7xl font-black text-white text-glow hidden z-10 bg-black/30"></div>
+            </div>
+
+            <!-- Polaroid Gallery (Populated after pictures are taken) -->
+            <div id="polaroidContainer" class="flex flex-wrap justify-center gap-6 hidden w-full"></div>
+
+            <!-- Photobooth Controls -->
+            <button id="startCamBtn" onclick="initCamera()" class="glass px-8 py-3 rounded-full text-lg font-mono text-pink-400 hover:text-white border border-pink-500 hover:bg-pink-600 transition-all shadow-[0_0_15px_rgba(236,72,153,0.4)]">
+                Turn on Camera
+            </button>
+            
+            <button id="snapBtn" onclick="startPhotoSequence()" class="hidden glass px-8 py-3 rounded-full text-lg font-mono text-cyan-400 hover:text-white border border-cyan-500 hover:bg-cyan-600 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)]">
+                Take 3 Photos!
+            </button>
+
+            <button id="downloadBtn" onclick="downloadCollage()" class="hidden bg-white text-black font-bold px-8 py-3 rounded-full text-lg hover:bg-zinc-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Download Polaroid Strip
+            </button>
+        </div>
+        
+        <!-- Hidden Canvas for Collage Generation -->
+        <canvas id="captureCanvas" class="hidden"></canvas>
+    </section>
+
+    <!-- Cinematic Gallery -->
+    <section class="py-12 md:py-20 bg-zinc-950">
+        <div class="container mx-auto px-4 md:px-6">
+             <h2 class="text-3xl md:text-4xl cursive-text italic mb-10 text-center text-zinc-400">A Lifetime of Memories</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 cinematic-frame py-8">
+                <div class="overflow-hidden rounded-lg shadow-2xl antigravity">
+                    <img src="https://res.cloudinary.com/daxczul2b/image/upload/v1778356798/IMG_20231230_143120_mlk1v3.jpg" class="film-still hover:scale-105 transition duration-700" alt="Memory 1">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-2xl antigravity md:mt-12">
+                    <img src="https://res.cloudinary.com/daxczul2b/image/upload/v1778356799/IMG20260306225720_cwmfvq.jpg" class="film-still hover:scale-105 transition duration-700" alt="Memory 2">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-2xl antigravity">
+                    <img src="https://res.cloudinary.com/daxczul2b/image/upload/v1778356801/DSC_0456_pccqsy.jpg" class="film-still hover:scale-105 transition duration-700" alt="Memory 3">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-2xl antigravity md:mt-12">
+                    <img src="https://res.cloudinary.com/daxczul2b/image/upload/v1778356886/IMG_20211229_110526_hnn0jh.jpg" class="film-still hover:scale-105 transition duration-700" alt="Memory 4">
+                </div>
+             </div>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-zinc-600 font-mono text-xs md:text-sm border-t border-zinc-900 px-4">
+        &copy; 2026 Visualsbyqusai | Compiled with Love by Qusai for the World's Best Mom
+    </footer>
+
+    <!-- Video Player Modal -->
+    <div id="videoModal" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-md flex items-center justify-center p-4 opacity-0 transition-opacity duration-500">
+        <div class="relative w-full max-w-5xl aspect-video rounded-xl overflow-hidden border border-zinc-800 shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+            <button onclick="closeVideo()" class="absolute top-4 right-4 z-20 text-white bg-black/50 hover:bg-pink-600 rounded-full p-2 transition-colors border border-white/20">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <video id="momVideo" class="w-full h-full object-cover" controls playsinline>
+                <source src="https://res.cloudinary.com/daxczul2b/video/upload/v1778356540/lv_0_20260510010418_1_zrvvsy.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        // Best Mom Reveal
+        function revealBestMom() {
+            const btn = document.getElementById('triggerBtn');
+            const reveal = document.getElementById('bestMomReveal');
+            const audio = document.getElementById('bg-music');
+            
+            audio.volume = 0.4; 
+            audio.play().catch(e => console.log("Audio play failed."));
+
+            btn.classList.add('animate__animated', 'animate__fadeOutUp');
+            
+            setTimeout(() => {
+                btn.style.display = 'none';
+                reveal.classList.remove('hidden');
+            }, 500); 
+        }
+
+        // Video Modal Logic
+        const modal = document.getElementById('videoModal');
+        const video = document.getElementById('momVideo');
+        const bgMusic = document.getElementById('bg-music');
+
+        function openVideo() {
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.remove('opacity-0'); }, 10);
+            if(!bgMusic.paused) { bgMusic.pause(); }
+            video.play();
+        }
+
+        function closeVideo() {
+            modal.classList.add('opacity-0');
+            video.pause();
+            setTimeout(() => { modal.classList.add('hidden'); }, 500); 
+        }
+
+        // Photobooth Logic
+        let stream = null;
+        let photos = [];
+        const videoFeed = document.getElementById('cameraFeed');
+        const captureCanvas = document.getElementById('captureCanvas');
+        const ctx = captureCanvas.getContext('2d');
+
+        async function initCamera() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
+                videoFeed.srcObject = stream;
+                
+                document.getElementById('cameraWrapper').classList.remove('hidden');
+                document.getElementById('startCamBtn').classList.add('hidden');
+                document.getElementById('snapBtn').classList.remove('hidden');
+                
+                // Reset UI if repeating
+                photos = [];
+                document.getElementById('polaroidContainer').innerHTML = '';
+                document.getElementById('polaroidContainer').classList.add('hidden');
+                document.getElementById('downloadBtn').classList.add('hidden');
+            } catch (err) {
+                alert("Please allow camera access to use the photobooth!");
+                console.error(err);
+            }
+        }
+
+        function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+        async function startPhotoSequence() {
+            document.getElementById('snapBtn').classList.add('hidden');
+            const overlay = document.getElementById('countdownOverlay');
+            overlay.classList.remove('hidden');
+
+            // Force canvas to a square aspect ratio based on video width for a uniform polaroid look
+            captureCanvas.width = videoFeed.videoWidth;
+            captureCanvas.height = videoFeed.videoWidth; 
+
+            for(let i = 0; i < 3; i++) {
+                // Countdown
+                for(let c = 3; c > 0; c--) {
+                    overlay.innerText = c;
+                    overlay.classList.add('animate__animated', 'animate__zoomIn');
+                    await sleep(1000);
+                    overlay.classList.remove('animate__animated', 'animate__zoomIn');
+                }
+                
+                // Flash effect
+                overlay.innerText = "📸";
+                
+                // Crop center of video feed for a square aspect ratio
+                const startY = (videoFeed.videoHeight - videoFeed.videoWidth) / 2;
+                
+                // Draw mirror image to canvas
+                ctx.save();
+                ctx.scale(-1, 1);
+                ctx.translate(-captureCanvas.width, 0);
+                ctx.drawImage(videoFeed, 0, startY > 0 ? startY : 0, videoFeed.videoWidth, videoFeed.videoWidth, 0, 0, captureCanvas.width, captureCanvas.height);
+                ctx.restore();
+
+                const dataURI = captureCanvas.toDataURL('image/jpeg');
+                photos.push(dataURI);
+                
+                // Render to DOM
+                renderPolaroidToDOM(dataURI, i);
+                await sleep(500); 
+            }
+            
+            overlay.classList.add('hidden');
+            
+            // Turn off camera to save battery
+            stream.getTracks().forEach(track => track.stop());
+            document.getElementById('cameraWrapper').classList.add('hidden');
+            
+            // Show Download button
+            document.getElementById('downloadBtn').classList.remove('hidden');
+        }
+
+        function renderPolaroidToDOM(src, index) {
+            const container = document.getElementById('polaroidContainer');
+            container.classList.remove('hidden');
+            
+            const rotations = ['-rotate-3', 'rotate-2', '-rotate-1'];
+            
+            const card = document.createElement('div');
+            card.className = `polaroid-card w-48 animate__animated animate__fadeInUp ${rotations[index]}`;
+            
+            const img = document.createElement('img');
+            img.src = src;
+            img.className = 'w-full aspect-square object-cover mb-3';
+            
+            const text = document.createElement('p');
+            text.className = 'cursive-text text-black text-center text-sm font-bold';
+            text.innerText = 'Maa & Me';
+
+            card.appendChild(img);
+            card.appendChild(text);
+            container.appendChild(card);
+        }
+
+        async function downloadCollage() {
+            // Build the final high-res photobooth strip
+            const stripCanvas = document.createElement('canvas');
+            const sCtx = stripCanvas.getContext('2d');
+            
+            const cardWidth = 600;
+            const photoSize = 540;
+            const padding = 30;
+            const topSpace = 100; // Added space at top for a cute header
+            const bottomSpace = 160; // Space for the footer text
+            
+            stripCanvas.width = cardWidth;
+            stripCanvas.height = topSpace + (photoSize * 3) + (padding * 2) + bottomSpace;
+            
+            // 1. Creative, Warm Background Gradient
+            const gradient = sCtx.createLinearGradient(0, 0, stripCanvas.width, stripCanvas.height);
+            gradient.addColorStop(0, '#fdf2f8'); // Light soft pink
+            gradient.addColorStop(0.5, '#fce7f3'); // Mid pink
+            gradient.addColorStop(1, '#fbcfe8'); // Warmer pink at the bottom
+            sCtx.fillStyle = gradient;
+            sCtx.fillRect(0, 0, stripCanvas.width, stripCanvas.height);
+
+            // 2. Cute Border around the whole strip
+            sCtx.lineWidth = 10;
+            sCtx.strokeStyle = '#f9a8d4'; // Pink border
+            sCtx.strokeRect(5, 5, stripCanvas.width - 10, stripCanvas.height - 10);
+            
+            // 3. Header Text
+            sCtx.fillStyle = '#be185d';
+            sCtx.font = 'bold 35px "Playfair Display", serif';
+            sCtx.textAlign = 'center';
+            sCtx.fillText("✨ Made with Love ✨", stripCanvas.width / 2, 60);
+            
+            // Draw photos with a fix for the black bar
+            for(let i = 0; i < 3; i++) {
+                const img = new Image();
+                img.src = photos[i];
+                await new Promise(r => img.onload = r);
+                
+                const yOffset = topSpace + (i * (photoSize + padding));
+                
+                // Add individual white polaroid frames with soft shadows behind each picture
+                sCtx.shadowColor = 'rgba(236, 72, 153, 0.2)'; // Pinkish shadow
+                sCtx.shadowBlur = 20;
+                sCtx.shadowOffsetY = 10;
+                sCtx.fillStyle = '#ffffff';
+                sCtx.fillRect(padding - 10, yOffset - 10, photoSize + 20, photoSize + 40);
+                
+                // Reset shadow before drawing image so the image itself isn't glowing
+                sCtx.shadowColor = 'transparent';
+                
+                // FIX FOR BLACK BAR: Crop the source image dynamically to a perfect square
+                const sourceSize = Math.min(img.width, img.height); 
+                
+                sCtx.drawImage(
+                    img, 
+                    0, 0, sourceSize, sourceSize,          // Source x, y, width, height (perfect square crop)
+                    padding, yOffset, photoSize, photoSize // Destination x, y, width, height
+                );
+
+                // Add a cute little heart at the bottom of each polaroid frame
+                sCtx.fillStyle = '#db2777';
+                sCtx.font = '24px Arial';
+                sCtx.fillText("❤️", stripCanvas.width / 2, yOffset + photoSize + 22);
+            }
+            
+            // 4. Emotional Footer Text
+            sCtx.fillStyle = '#be185d'; // Deep pink text
+            sCtx.font = 'italic bold 45px "Playfair Display", serif';
+            sCtx.textAlign = 'center';
+            sCtx.fillText("Maa & Me", stripCanvas.width / 2, stripCanvas.height - 90);
+            
+            // Subtitle
+            sCtx.font = '25px "Inter", sans-serif';
+            sCtx.fillStyle = '#db2777';
+            sCtx.fillText("Happy Mother's Day 2026", stripCanvas.width / 2, stripCanvas.height - 40);
+            
+            // Trigger Download
+            const link = document.createElement('a');
+            link.download = 'Maa-and-Me-MadeWithLove.png';
+            link.href = stripCanvas.toDataURL('image/png', 1.0);
+            link.click();
+        }
+    </script>
+</body>
+</html>
