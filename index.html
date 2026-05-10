@@ -32,7 +32,7 @@
 
     <!-- Hidden Audio Player -->
     <audio id="bg-music" loop>
-        <source src="PASTE_YOUR_EMOTIONAL_SONG_LINK_HERE.mp3" type="audio/mpeg">
+        <source src="https://res.cloudinary.com/daxczul2b/video/upload/v1778399618/MERI_MAA_FULL_VIDEO_SONG_Film_Version_YAARIYAN_HIMANSH_K_RAKUL_P_PRITAM_Divya_Khosla_Kumar_t0mqkw.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Hero Section -->
@@ -202,6 +202,7 @@ Qusai
         }
 
         // Video Modal Logic
+        // Video Modal Logic
         const modal = document.getElementById('videoModal');
         const video = document.getElementById('momVideo');
         const bgMusic = document.getElementById('bg-music');
@@ -209,14 +210,40 @@ Qusai
         function openVideo() {
             modal.classList.remove('hidden');
             setTimeout(() => { modal.classList.remove('opacity-0'); }, 10);
-            if(!bgMusic.paused) { bgMusic.pause(); }
+            
+            // This pauses the background music perfectly!
+            if(!bgMusic.paused) { 
+                bgMusic.pause(); 
+            }
             video.play();
         }
 
         function closeVideo() {
             modal.classList.add('opacity-0');
             video.pause();
+            
+            // This automatically resumes the soothing background music!
+            bgMusic.play(); 
+
             setTimeout(() => { modal.classList.add('hidden'); }, 500); 
+        }
+
+        // Just to make sure the volume is extra soothing when she first clicks the button:
+        function revealBestMom() {
+            const btn = document.getElementById('triggerBtn');
+            const reveal = document.getElementById('bestMomReveal');
+            const audio = document.getElementById('bg-music');
+            
+            // Changed from 0.4 to 0.25 for a perfect, low soothing volume
+            audio.volume = 0.25; 
+            audio.play().catch(e => console.log("Audio play failed."));
+
+            btn.classList.add('animate__animated', 'animate__fadeOutUp');
+            
+            setTimeout(() => {
+                btn.style.display = 'none';
+                reveal.classList.remove('hidden');
+            }, 500); 
         }
 
         // Photobooth Logic
